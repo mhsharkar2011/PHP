@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gender Select</title>
-    
+    <?php 
+        if(isset($_POST['gender']))
+        {
+            $gen = $_POST['gender'];
+            echo "Selected Gender : " . $gen;
+        }
+    ?>
 </head>
 <body>
-<form  name="genderForm" id="genderForm" onsubmit="clickHere(); return false;">   
+<form action="" method="post" name="genderForm" id="genderForm" onsubmit="clickHere(); return false">   
 <table>
     <tr>
         <td>Gender:</td>
@@ -26,7 +32,7 @@
     </tr>
 </table>
 </form>
-<p id="show"></p>
+<div id="show"></div>
 
 <script>
 function clickHere(){
