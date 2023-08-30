@@ -1,43 +1,31 @@
 <?php
-class Foo{
-    function bar($a, $b){
-        echo "This is function of foo " . $a+$b ."<hr>";
-    }
-}
 
-class Bar extends Foo{
-    function foo($a,$b){
-        echo "This is Bar class " . $a*$b . "<br>";
-    }
-}
+include "db_conn.php";
 
-function recursion($a){
-    if($a<20){
-        echo "$a\n" . "<hr>";
-        recursion($a+2);
-    }
-}
 
-function circle($r){
-    echo "Circle: " .pi()*$r*$r ;
-}
-
-function takes_array($input)
+class School
 {
-    echo "$input[0] + $input[1] = ", $input[0]+$input[1];
+    function subject(){
+        $subjects = [];
+        while($sub = $GLOBALS['result']->fetch_object()){
+            $subjects[] = $sub;
+        }
+
+        echo "<table border='1' cellspacing='0'>
+                    <th>ID</th>
+                    <th>Subject Name</th>
+                    <th>Remarks</th>";
+        foreach($subjects as $subject){
+           
+                  echo "<tr>
+                        <td> {$subject->subject_id}</td>
+                        <td> {$subject->s_name}</td>
+                        <td> {$subject->s_remarks}</td>
+                    </tr>";
+        }
+        echo "</table>";
+    }
 }
 
-
-$obj = new Foo;
-$obj = new Bar;
-$obj->bar(3,4);
-$obj->foo(4,5);
-
-recursion(1);
-
-circle(3);
-echo "<hr>";
-takes_array(4);
-
-
-?>
+$stdInfo = new School();
+$stdInfo->subject();
