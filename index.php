@@ -1,3 +1,10 @@
+<?php
+include "show.php";
+
+// $sql = "INSERT INTO users ('$full_name',)"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,26 +30,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Form Validation</td></tr>
-                            <tr><td>Form Validation</td></tr>
-                            <tr><td>Form Validation</td></tr>
-                            <tr><td>Form Validation</td></tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-responsive-lg">
-                    <table class="table table-striped">
-                        <thead>
                             <tr>
-                                <th class="text-center">PHP OOP</th>
+                                <td>
+                                    <form action="" method="post">
+                                        Name: <input type="text" name="username" /><br />
+                                        Email: <input type="text" name="email" /><br />
+                                        <input type="submit" name="submit" value="Submit" />
+                                    </form>
+                                    <?php 
+                                    if(isset($_POST['submit'])){
+                                        $username = $_POST['username'];
+                                        $email = $_POST['email'];
+                                            foreach($results as $result){
+                                                echo $result->username;
+                                            }
+
+                                    }
+                                    ?>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="text-left">Object Cloning</td></tr>
-                            <tr><td class="text-left">Object Cloning</td></tr>
-                            <tr><td class="text-left">Object Cloning</td></tr>
-                            <tr><td class="text-left">Object Cloning</td></tr>
                         </tbody>
                     </table>
                 </div>

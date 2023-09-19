@@ -73,15 +73,23 @@ echo "</br>";
 print_r($emptyArray);
 
 echo "</br>";echo "</br>";
-$cars = ['name1'=>'Toyota','name2'=>'X-Carala'];
+?>
 
-
-rsort($cars);
-
-foreach($cars as $key=>$value)
-{
-    echo $key . " = " . $value;
+<?php
+for($i = 1; $i <= 100; $i++){
+    echo $i;
     echo "<br>";
 }
 
+for($i = 1; $i <=100; $i++){
+    if($i % 3 == 0){
+        echo "Fizz <br>";
+    }elseif($i % 5 == 0){
+        echo "Buzz <br>";
+    }elseif($i % 15 == 0){
+        echo "FizzBazz <br>";
+    }else {
+        echo "";
+    }
+}
 

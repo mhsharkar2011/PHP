@@ -1,5 +1,5 @@
 <?php
-
+include "interface.php";
 class Guardian implements School, College, Varsity
 {
     public function __construct()
