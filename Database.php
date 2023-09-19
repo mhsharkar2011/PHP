@@ -1,30 +1,38 @@
-<?php 
+<?php
+class Database
+{
 
-class Database{
-    public static $host = DB_HOST;
-    public static $user = DB_USER;
-    public static $pass = DB_PASSWORD;
-    public static $dbname = DB_NAME;
-
-    private static $instance;
-    private $mysqli;
+    private static $obj;
+    private $db_connect;
 
     private final function __construct()
     {
-        $this->mysqli = new mysqli(self::$host,self::$user,self::$pass,self::$dbname);
+        $host = DB_HOST;
+        $user = DB_USER;
+        $pass = DB_PASSWORD;
+        $dbname = DB_NAME;
 
-        if($this->mysqli->connect_error){
-            die("Database connection fail: " . $this->mysqli->connect_error);
-        }
+        $this->db_connect = new mysqli($host,$user,$pass,$dbname);
+        
     }
 
     public static function getConnect()
     {
-        if(!self::$instance){
-            self::$instance = new self();
+        if (!isset(self::$obj)) {
+            self::$obj = new Database;
         }
-        return self::$instance;
+        return self::$obj;
     }
 
+    public function select($query)
+    {
+        $result = $this->db_connect->query($query) or die($this->db_connect->error.__LINE__);
 
+       if($result->num_rows > 0){
+         return $result;
+       } else {
+         return false;
+       }
+    }
 }
+
