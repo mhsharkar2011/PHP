@@ -4,8 +4,8 @@ class Serialize
 {
     public $html;
     public $css;
-    private $php;
-    protected $java;
+    public $php;
+    public $java;
 
     function __construct()
     {
@@ -19,4 +19,9 @@ class Serialize
 $pro = new Serialize();
 $ser = serialize($pro);
 file_put_contents('serialize.text',$ser);
-echo $ser;
+
+$getCont = file_get_contents('serialize.text');
+$unser = unserialize($getCont);
+echo "<pre>";
+print_r($unser);
+echo "</pre>";  

@@ -1,8 +1,5 @@
 <?php
-include "show.php";
-
-// $sql = "INSERT INTO users ('$full_name',)"
-
+include "Database.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,36 +18,31 @@ include "show.php";
 <body>
     <div class="container">
         <div class="row">
-            <div class="col" style="column-width: 400px;">
+            <div class="col-lg-6" style="column-width: 400px;">
                 <div class="table-responsive-lg">
-                    <table class="table table-striped">
+                <form action="" method="post" name="regForm" id="regForm" onsubmit="submitData();">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">PHP Fundamental</th>
+                                <td class="text-center">PHP FUNDAMENTAL</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <form action="" method="post">
-                                        Name: <input type="text" name="username" /><br />
-                                        Email: <input type="text" name="email" /><br />
-                                        <input type="submit" name="submit" value="Submit" />
-                                    </form>
-                                    <?php 
-                                    if(isset($_POST['submit'])){
-                                        $username = $_POST['username'];
-                                        $email = $_POST['email'];
-                                            foreach($results as $result){
-                                                echo $result->username;
-                                            }
-
-                                    }
-                                    ?>
-                                </td>
+                                <td>First Name: <input class="form-control" type="text" name="first_name" /></td>
+                            </tr>
+                            <tr>
+                                <td> Last Name: <input class="form-control" type="text" name="last_name" /></td>
+                            </tr>
+                            <tr>
+                                <td>Email: <input class="form-control" type="text" name="email" /></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="submit" name="submit" value="Submit" /></td>
                             </tr>
                         </tbody>
                     </table>
+                    </form>
                 </div>
             </div>
         </div>
@@ -59,3 +51,11 @@ include "show.php";
 </body>
 
 </html>
+
+
+<script>
+    function submitData(){
+        let inputData = document.querySelectorAll('#regForm').values;
+        
+    }
+</script>
